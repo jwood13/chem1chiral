@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>JSmol -- Jmol/HTML5 Demo</title>
+<script type="text/javascript" src="JSmol.min.js"></script>
+
+<script type="text/javascript">
+
+Jmol._isAsync = false;
+
+// last update 2/18/2014 2:10:06 PM
+
+var jmolApplet0; // set up in HTML table, below
+
+// logic is set by indicating order of USE -- default is HTML5 for this test page, though
+
+var s = document.location.search;
+
+// Developers: The _debugCode flag is checked in j2s/core/core.z.js, 
+// and, if TRUE, skips loading the core methods, forcing those
+// to be read from their individual directories. Set this
+// true if you want to do some code debugging by inserting
+// System.out.println, document.title, or alert commands
+// anywhere in the Java or Jmol code.
+
+Jmol._debugCode = (s.indexOf("debugcode") >= 0);
+
+jmol_isReady = function(applet) {
+	document.title = (applet._id + " - Jmol " + Jmol.___JmolVersion)
+	Jmol._getElement(applet, "appletdiv").style.border="1px solid blue"
+}		
+
+var Info = {
+	width: 610,
+	height: 450,
+	debug: false,
+	color: "0xFFFFFF",
+	addSelectionOptions: false,
+	use: "HTML5",   // JAVA HTML5 WEBGL are all options
+	j2sPath: "./j2s", // this needs to point to where the j2s directory is.
+	jarPath: "./java",// this needs to point to where the java directory is.
+	jarFile: "JmolAppletSigned.jar",
+	isSigned: true,
+	script: "set antialiasDisplay;load shrinks.xyz.gz;select *;cartoons off;spacefill only;{all}.Radius=0.5;select elemno=0; {selected}.Radius=0.2;{selected}.color='white';select elemno=1; {selected}.color='#00cafc';anim mode loop",
+	serverURL: "https://chemapps.stolaf.edu/jmol/jsmol/php/jsmol.php",
+	readyFunction: jmol_isReady,
+	disableJ2SLoadMonitor: true,
+  disableInitialConsole: true,
+  allowJavaScript: true
+	//defaultModel: "$dopamine",
+	//console: "none", // default will be jmolApplet0_infodiv, but you can designate another div here or "none"
+}
+
+$(document).ready(function() {
+  $("#appdiv").html(Jmol.getAppletHtml("jmolApplet0", Info))
+})
+var lastPrompt=0;
+</script>
+</head>
+<body>
+<table width=1000 cellpadding=10>
+<tr></tr>
+<tr><td valign="top">
+<div id="appdiv"></div>
+<button onclick="void(Jmol.script(jmolApplet0,'anim play'))" title="Play">Play</button> 
+<button onclick="void(Jmol.script(jmolApplet0,'anim pause'))">Pause</button> 
+<br>
+<button onclick="void(Jmol.script(jmolApplet0,'frame rewind'))">Start</button> 
+<button onclick="void(Jmol.script(jmolApplet0,'frame next'))">Next</button> 
+<button onclick="void(Jmol.script(jmolApplet0,'frame prev'))">Prev</button> 
+<button onclick="void(Jmol.script(jmolApplet0,'frame last'))">Final</button> 
+<br>
+<button onclick="void(Jmol.script(jmolApplet0,'anim mode loop'))">Loop</button> 
+<button onclick="void(Jmol.script(jmolApplet0,'anim mode once'))">No Loop</button> 
+<br>
+<!-- <a href="javascript:Jmol.loadFileFromDialog(jmolApplet0)">open...</a>
+<a href="javascript:Jmol.script(jmolApplet0,'console')">console</a>
+<a href="javascript:Jmol.script(jmolApplet0,'image')">image</a>
+display -->
+<!-- Quality:
+<a href="javascript:Jmol.script(jmolApplet0,'set antialiasDisplay false')">faster</a>
+<a href="javascript:Jmol.script(jmolApplet0,'set antialiasDisplay true')">sharper</a>
+<br>Size:
+<a href="javascript:Jmol.script(jmolApplet0,'set window 840 600')">extra large</a>
+<a href="javascript:Jmol.script(jmolApplet0,'set window 610 450')">large</a>
+<a href="javascript:Jmol.script(jmolApplet0,'set window 420 300')">small</a>
+<br> -->
+
+<!-- <br><a href="javascript:Jmol.script(jmolApplet0,'select *;cartoons off;spacefill only;{all}.Radius=0.5;select elemno=0; {selected}.Radius=0.2')">Rod View</a>
+
+<br><a href="javascript:Jmol.script(jmolApplet0,'color property atomno')">color atomno</a>
+<a href="javascript:Jmol.script(jmolApplet0,'color cpk')">color cpk</a>
+<a href="javascript:Jmol.script(jmolApplet0,'color structure')">color structure</a> -->
+
+
+
+<br>
+
+</td><td valign=top>
+	<img src="qr-code.png" width='200'><br>
+	<b>Scan to load on your phone.</b><br>
+<h2> Nucleation and Growth</h2>
+	When a small cluster of particles forms in a solution, they stick together and add or lose particles from the cluster through random motion.
+	If the cluster is not large enough, the surface area is too large for the volume of the cluster, and the cluster will likely dissolve.<p>
+	Click play to watch the cluster disappear. You can zoom in and change your viewpoint with the by swiping on the image<br>
+	When the Cluster grows past a critical size, it becomes more favourable to grow larger, rather than dissolve.<p>
+	Click <a href="javascript:Jmol.script(jmolApplet0,'load grows.xyz.gz;select *;cartoons off;spacefill only;{all}.Radius=0.5;select elemno=0; {selected}.Radius=0.2;{selected}.color=\'white\';select elemno=1; {selected}.color=\'#00cafc\';anim mode loop')">
+	here</a> to load the movie of the cluster growing.<br>
+	Click <a href="javascript:Jmol.script(jmolApplet0,'load shrinks.xyz.gz;select *;cartoons off;spacefill only;{all}.Radius=0.5;select elemno=0; {selected}.Radius=0.2;{selected}.color=\'white\';select elemno=1; {selected}.color=\'#00cafc\';anim mode loop')">
+		here</a> to reload the shrinking movie
+<br>
+
+<br><br> 
+<!-- <table cellpadding=5><tr><td valign=top>
+  <a href="javascript:Jmol.script(jmolApplet0,'load result_atoms.log.1000_clustered.xyz;')">THIS ONE</a>
+  <a href="javascript:Jmol.script(jmolApplet0,'load U41starts.xyz;')">THIS ONE</a>
+  <a href="javascript:Jmol.script(jmolApplet0,'load U83ends.xyz;')">THIS ONE</a>
+<br>
+ </td></tr></table> -->
+</td>
+</tr></table>
+</body>
+</html>
