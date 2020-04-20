@@ -34,6 +34,7 @@ $("#mydiv").html(Jmol.getAppletHtml("jmolApplet0",Info))
 $("#btns").html(
 	Jmol.jmolButton(jmolApplet0, "spin on","spin ON")
  +Jmol.jmolButton(jmolApplet0, "spin off","spin OFF")
+ +Jmol.jmolButton(jmolApplet0,"{_O}.element='F'; {_Cl}.element='O'; {_F}.element='Cl'", "swap atoms")
  )	
 
 }
