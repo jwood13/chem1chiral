@@ -35,7 +35,8 @@ $("#btns").html(
 	Jmol.jmolButton(jmolApplet0, "spin on","spin ON")
  +Jmol.jmolButton(jmolApplet0, "spin off","spin OFF")
  +Jmol.jmolButton(jmolApplet0,"{_Br}.element='F'; {_Cl}.element='Br'; {_F}.element='Cl'", "swap atoms")
- +Jmol.jmolButton(jmolApplet0,"{_O}.element='F'; {_Cl}.element='O'; {_F}.element='Cl'", "swap different atoms")
+ +Jmol.jmolButton(jmolApplet0,"a = {O4}.x - {Cl5}.x; {O4}.x -= a; {Cl5}.x += a; {H6}.x -= a;a = {O4}.y - {Cl5}.y; {O4}.y -= a; {Cl5}.y += a; {H6}.y -= a;a = {O4}.z - {Cl5}.z; {O4}.z -= a; {Cl5}.z += a; {H6}.z -= a;", "swap different atoms")
+ +"<br>Click and drag to rotate."
  )	
 
 }
